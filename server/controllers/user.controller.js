@@ -1,6 +1,6 @@
 const User = require('../models/user.model');
 
-// Method to get user details
+// Method to get user details by email
 exports.userDetails = function(req, res){
     User.findOne({"email": req.params.email})
     .then(function (user) {
@@ -42,6 +42,14 @@ exports.create = function (req, res) {
       weight: req.body.data.weight,
       height: req.body.data.height
     });
+
+    User.find({email : user.email}, function (err, docs) {
+        return res.status(400).json({
+            status: 400,
+            message: "User already exists"
+          });
+    });
+
     user.save()
       .then(function (createdUser) {
         return res.status(200).json({
