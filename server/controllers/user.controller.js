@@ -15,6 +15,7 @@ exports.userLogin = function(req, res){
       });
     })
     .catch(function (err) {
+      //console.log(err.message);
       return res.status(400).json({
         status: 400,
         message: err.message

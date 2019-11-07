@@ -8,7 +8,8 @@ import { WebService } from '../web.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public webService: WebService) { }
+  constructor(public webService: WebService) { 
+  }
 
   ngOnInit() {
   }
@@ -20,8 +21,13 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.webService.loginAPI({"email":email, "password":password}); 
-    }
+    this.webService.loginAPI({"email":email, "password":password}).subscribe(data =>{
+      alert("login sucess");
+    }, err =>{
+      alert(err.error.message);
+    }, ()=>{
+
+    }); 
 
 
   }

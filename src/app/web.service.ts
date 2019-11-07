@@ -11,6 +11,9 @@ export class WebService {
 
 
   loginAPI(user: any): Observable<any>{
+
+    //console.log("loginAPI")
+
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
     let body = JSON.stringify(user);
