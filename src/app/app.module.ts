@@ -12,6 +12,9 @@ import { PerformanceComponent } from './performance/performance.component';
 import { DietComponent } from './diet/diet.component';
 import { WorkoutComponent } from './workout/workout.component';
 
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { UserService } from './user.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +29,10 @@ import { WorkoutComponent } from './workout/workout.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
