@@ -14,6 +14,7 @@ import { WorkoutComponent } from './workout/workout.component';
 
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { UserService } from './user.service';
+import { WebService } from './web.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { UserService } from './user.service';
     AppRoutingModule,
     AlertModule.forRoot()
   ],
-  providers: [UserService],
+  providers: [UserService, WebService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

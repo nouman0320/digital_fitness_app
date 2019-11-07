@@ -3,10 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-
-  isUserLoggedIn: Boolean = false;
-
+export class WebService {
 
   constructor() { }
 }
