@@ -1,5 +1,28 @@
 const User = require('../models/user.model');
 
+// Method to login user
+exports.userLogin = function(req, res){
+    //console.log(req.body);
+    User.findOne({"email": req.body.email, "password": req.body.password})
+    .then(function (user) {
+
+        if(user == null) throw new Error("Email or Password incorrect");
+
+      return res.status(200).json({
+        status: 200,
+        data: {},
+        message: "Success"
+      });
+    })
+    .catch(function (err) {
+      return res.status(400).json({
+        status: 400,
+        message: err.message
+      });
+    });
+}
+
+
 // Method to get user details by email
 exports.userDetails = function(req, res){
     User.findOne({"email": req.params.email})

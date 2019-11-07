@@ -16,6 +16,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { UserService } from './user.service';
 import { WebService } from './web.service';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { WebService } from './web.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     AlertModule.forRoot()
   ],
