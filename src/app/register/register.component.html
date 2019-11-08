@@ -1,1 +1,50 @@
-<p>register works!</p>
+<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+    <div class="wrapper wrapper--w960">
+        <div class="card card-2">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">Registration Info</h2>
+                <form method="POST">
+                    <div class="input-group">
+                        <input #email class="input--style-2" type="email" placeholder="Email" name="name">
+                    </div>
+                    <div class="row">
+                        <div class="input-group col-5">
+                            <input #firstName class="input--style-2" type="text" placeholder="First Name" name="name">
+                        </div>
+                        <div class="input-group col-5 ml-3">
+                            <input #lastName class="input--style-2" type="text" placeholder="Last Name" name="name">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <input #password class="input--style-2" type="password" placeholder="Password" name="name">
+                    </div>
+                    
+                    <div class="row">
+                        <div class="input-group col-5">
+                            <input #weight class="input--style-2" type="number" placeholder="Weight (kg)" name="name">
+                        </div>
+                        <div class="input-group col-5 ml-3">
+                            <input #height class="input--style-2" type="number" placeholder="Height (ft)" name="name">
+                        </div>
+                    </div>
+
+
+                   <div class="row">
+                    <div class="p-t-30 col-3">
+                        <button (click)="register(email.value, firstName.value, lastName.value, password.value, weight.value, height.value)" class="btn btn--radius btn--green">Register</button>
+                    </div>
+                    <div class="p-t-30 col-3">
+                        <button (click)="switchToLogin()" class="btn btn--radius btn--white">Already have account?</button>
+                    </div>
+                   </div>
+                
+                    
+                    
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
