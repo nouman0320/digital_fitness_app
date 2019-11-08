@@ -21,4 +21,14 @@ export class WebService {
       headers: headers
     });
   }
+
+
+  registerAPI(user: any): Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let body = JSON.stringify(user);
+    return this.http.post('/api/users/create' , body, {
+      headers: headers
+    });
+  }
 }

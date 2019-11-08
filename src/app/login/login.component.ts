@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebService } from '../web.service';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public webService: WebService, public router: Router) { 
+  constructor(public webService: WebService, public router: Router, public userService: UserService) { 
+    if(this.userService.isUserLoggedIn == true){
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
@@ -26,7 +30,10 @@ export class LoginComponent implements OnInit {
     }
 
     this.webService.loginAPI({"email":email, "password":password}).subscribe(data =>{
-      alert("login sucess");
+      //alert("login sucess");
+      //alert("Welcome back!");
+      this.userService.isUserLoggedIn = true;
+      this.router.navigate(["/"]);
     }, err =>{
       alert(err.error.message);
     }, ()=>{
