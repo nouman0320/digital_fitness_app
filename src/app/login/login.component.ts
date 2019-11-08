@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.webService.loginAPI({"email":email, "password":password}).subscribe(data =>{
       //alert("login sucess");
       //alert("Welcome back!");
-      this.userService.loginUser();
+      this.userService.loginUser(data['data']['_id'], data['data']['email']);
       this.router.navigate(["/"]);
     }, err =>{
       alert(err.error.message);

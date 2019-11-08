@@ -10,7 +10,8 @@ exports.userLogin = function(req, res){
 
       return res.status(200).json({
         status: 200,
-        data: {},
+        data: {"_id": user['_id'],
+        "email": user['email']},
         message: "Success"
       });
     })
