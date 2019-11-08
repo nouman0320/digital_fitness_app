@@ -29,7 +29,7 @@ exports.userDetails = function(req, res){
     User.findOne({"email": req.params.email})
     .then(function (user) {
 
-        if(user == null) throw new Error("User doesn't exist")
+        if(user == null) throw new Error("User doesn't exist");
 
         const userR = {
             "email": user.email,
@@ -67,14 +67,17 @@ exports.create = function (req, res) {
       height: req.body.data.height
     });
 
-    User.find({email : user.email}, function (err, docs) {
-        return res.status(400).json({
-            status: 400,
-            message: "User already exists"
-          });
-    });
 
-    user.save()
+    User.find({email : user.email}, function (err, docs) {
+      console.log(docs);   
+      if(docs.length > 0){
+        return res.status(400).json({
+          status: 400,
+          message: "User already exists"
+        });
+      }
+
+      user.save()
       .then(function (createdUser) {
         return res.status(200).json({
           status: 200,
@@ -82,7 +85,8 @@ exports.create = function (req, res) {
           message: 'Success'
         });
       })
-      .catch(function (err) {
+
+    }).catch(function (err) {
         return res.status(400).json({
           status: 400,
           message: err.message
