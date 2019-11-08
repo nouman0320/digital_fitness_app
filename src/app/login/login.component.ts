@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebService } from '../web.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,15 @@ import { WebService } from '../web.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public webService: WebService) { 
+  constructor(public webService: WebService, public router: Router) { 
   }
 
   ngOnInit() {
   }
 
+  switchToRegister(){
+    this.router.navigate(["/register"]);
+  }
 
   login(email: String, password: String){
     if(email=="" || password==""){
