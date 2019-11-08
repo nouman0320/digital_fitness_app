@@ -31,4 +31,11 @@ export class WebService {
       headers: headers
     });
   }
+
+  userDetailsAPI(email: String): Observable<any>{
+    let headers = new HttpHeaders();
+    return this.http.get('api/users/'+email, {
+      headers: headers
+    });
+  }
 }
