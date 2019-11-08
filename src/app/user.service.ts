@@ -13,9 +13,10 @@ export class UserService {
   email: String = "";
   firstName: String = "";
   lastName: String = "";
-  weight: Number = 0;
-  height: Number = 0;
+  weight: number = 0;
+  height: number = 0;
 
+  bmi: number = 0;
 
 
   constructor(public webService: WebService) {
@@ -58,6 +59,8 @@ export class UserService {
       this.lastName = data['data']['last_name'];
       this.weight = data['data']['weight'];
       this.height = data['data']['height'];
+
+      this.bmi = this.weight/(this.height)**2;
     },
     err=>{
       console.log(err.error.message);

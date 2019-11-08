@@ -27,3 +27,20 @@
       <button type="button" (click)="navLogout()" class="btn btn-danger ml-3">Logout</button>
     </div>
   </nav>
+
+
+  
+  <div class="card m-3" style="max-width: 880px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="https://www.thenational.ae/image/policy:1.923498:1571062886/IMG_7920.jpg?f=16x9&w=1200&$p$f$w=b219291" class="card-img">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Know your BMI</h5>
+          <p class="card-text">Your current BMI is {{this.userService.bmi}}</p>
+          <p class="card-text"><small class="text-muted">Last updated just now.</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
