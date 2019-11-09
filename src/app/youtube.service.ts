@@ -13,8 +13,9 @@ export class YoutubeService {
 
   constructor(public http: HttpClient) { }
 
-    getVideosForChanel(channel, maxResults): Observable<Object> {
-    let url = 'https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&channelId=' + channel + '&order=date&part=snippet &type=video,id&maxResults=' + maxResults
+    getVideosForChanel(maxResults): Observable<Object> {
+      //https://www.youtube.com/results?
+    let url = 'https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&q=fitness+diet+plan'+'&order=relevance&part=snippet &type=video,id&maxResults=' + maxResults
     return this.http.get(url)
       .pipe(map((res) => {
         return res;

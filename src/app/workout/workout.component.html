@@ -50,7 +50,7 @@
           </select>
 
           <label *ngIf="this.selectedValueExercise==3" for="inp">Custom:</label>
-          <input *ngIf="this.selectedValueExercise==3" type="text" placeholder="exercise" class="form-control">
+          <input *ngIf="this.selectedValueExercise==3" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.customType" type="text" placeholder="exercise" class="form-control">
           <br>
         </div>
       </form>
@@ -60,7 +60,7 @@
       <label class="checkbox-inline ml-4"><input class="mr-2" [(ngModel)]="this.stretched" type="checkbox" value="">Did you stretch?</label>
       <label class="checkbox-inline ml-4"><input class="mr-2" [(ngModel)]="this.achieved" type="checkbox" value="">Did you achieve your goal?</label> 
 
-      <button type="button" class="btn btn-success ml-3">Submit</button>
+      <button type="button" (click)="addWorkout()" class="btn btn-success ml-3">Submit</button>
 
 
       <h5 class="pt-4">History</h5>
@@ -71,41 +71,23 @@
               <th scope="col">Category</th>
               <th scope="col">Type</th>
               <th scope="col">Warmed up</th>
-              <th scope="col">Streched</th>
+              <th scope="col">Stretched</th>
               <th scope="col">Achieved Goal</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1-1-1</th>
-              <td>test</td>
-              <td>test</td>
-              <td>yes</td>
-              <td>yes</td>
-              <td>yes</td>
+            <tr *ngFor="let workout of workouts;">
+              <th scope="row">{{workout.date}}</th>
+              <td>{{workout.category}}</td>
+              <td>{{workout.type}}</td>
+              <td><input type="checkbox" [disabled]="true" [checked]="workout.warmedup"></td>
+              <td><input type="checkbox" [disabled]="true" [checked]="workout.stretched"></td>
+              <td><input type="checkbox" [disabled]="true" [checked]="workout.achieved"></td>
+              <td><button class="btn btn-sm btn-danger" type="button" (click)="this.removeWorkout(workout._id)">Remove</button></td>
             </tr>
           </tbody>
         </table>
-
-
-      <h4 class="pt-4">Watch</h4>
-      <p>Videos recommendation</p>
-      <div class="card-group mt-6">
-        <div *ngFor="let video of videos" class="col-xl-6 col-md-6 mb-4">
-            <div class="card bg-dark text-white">
-                <img [src]="video.snippet.thumbnails.medium.url" class="card-img" alt="...">
-                
-                <div class="card-img-overlay">
-                    <h5 class="card-overlay-x"><a style="color: white" href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}
-                    </a></h5>
-                    <div class="card-text text-black-50">{{video.snippet.description.slice(0, 100)}}</div>
-                    <p class="card-text">{{video.snippet.description}}</p>
-                </div>
-            </div>
-          </div>
-      </div>
-
-        
     </div>
 
    

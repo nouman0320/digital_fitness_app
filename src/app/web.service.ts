@@ -41,6 +41,29 @@ export class WebService {
     });
   }
 
+  newWorkoutAPI(workout: any): Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let body = JSON.stringify(workout);
+    return this.http.post('/api/workouts/add' , body, {
+      headers: headers
+    });
+  }
+
+  removeWorkoutsAPI(_id: String): Observable<any>{
+    let headers = new HttpHeaders();
+    return this.http.delete('api/workouts/'+_id, {
+      headers: headers
+    });
+  }
+
+  getWorkoutsAPI(_userId: String): Observable<any>{
+    let headers = new HttpHeaders();
+    return this.http.get('api/workouts/'+_userId, {
+      headers: headers
+    });
+  }
+
   userDetailsAPI(email: String): Observable<any>{
     let headers = new HttpHeaders();
     return this.http.get('api/users/'+email, {

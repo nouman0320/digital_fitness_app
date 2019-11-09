@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { YoutubeService } from '../youtube.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-diet',
@@ -9,13 +12,26 @@ import { Router } from '@angular/router';
 })
 export class DietComponent implements OnInit {
 
-  constructor(public userService: UserService, public router: Router) {
+  videos: any[];
+
+  private unsubscribe$: Subject<any> = new Subject();
+
+  constructor(public userService: UserService, public router: Router, private youTubeService: YoutubeService) {
     if(!this.userService.isUserLoggedIn){
       this.router.navigate(['/login']);
     }
    }
 
   ngOnInit() {
+    this.videos = [];
+    this.youTubeService
+    .getVideosForChanel(15)
+    .pipe(takeUntil(this.unsubscribe$))
+    .subscribe(lista => {
+    for (let element of lista["items"]) {
+    this.videos.push(element)
+    }
+    });
   }
 
 
