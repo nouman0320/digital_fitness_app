@@ -38,9 +38,30 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">Know your BMI</h5>
-          <p class="card-text">Your current BMI is {{this.userService.bmi}}</p>
+          <p class="card-text">Your current BMI is {{this.userService.bmi}} <br/>Category: {{this.userService.bmi_category}}</p>
           <p class="card-text"><small class="text-muted">Last updated just now.</small></p>
         </div>
       </div>
     </div>
   </div>
+
+  <h2 class="mt-2 ml-4">Current</h2>
+
+  <div class="row mt-2 ml-3">
+    <div class="form-group col-3">
+      <label class="text-uppercase">Weight</label>
+      <input class="form-control" type="number" [(ngModel)]="this.userService.weight" (keyup)="this.userService.updateBMI()" placeholder="Weight">
+    </div>
+    <div class="form-group col-3">
+      <label class="text-uppercase">Height</label>
+      <input class="form-control" type="number" (keyup)="this.userService.updateBMI()" [(ngModel)]="this.userService.height" placeholder="Height">
+    </div>
+
+    <div class="form-group col-1 mt-4">
+       <button type="button" (click)="updateWeightHeight()" class="btn btn-info" style="margin-top: 5px;">Update</button>
+    </div>
+
+    <img src="https://miro.medium.com/max/888/1*fTBgwlcT6waWOfbvoFVFgw.gif">
+  </div>
+
+  

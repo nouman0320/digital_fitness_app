@@ -18,6 +18,8 @@ export class UserService {
 
   bmi: number = 0;
 
+  bmi_category: String = "NA";
+
 
   constructor(public webService: WebService) {
     var loggedIn = localStorage.getItem('login_status');
@@ -52,6 +54,28 @@ export class UserService {
     this.isUserLoggedIn = false;
   }
 
+  updateBMI(){
+    //console.log("update bmi called");
+    this.bmi = this.weight/(this.height)**2;
+
+
+      if(this.bmi <= 18.5)
+      {
+        this.bmi_category = "Underweight";
+      }
+      else if(this.bmi > 18.5 && this.bmi <=23){
+        this.bmi_category = "Normal Range";
+      }
+      else if(this.bmi > 23 && this.bmi <=25){
+        this.bmi_category = "Overweight - At Risk";
+      }
+      else if(this.bmi > 25 && this.bmi <= 30){
+        this.bmi_category = "Overweight - Moderately Obese";
+      }
+      else if(this.bmi > 30){
+        this.bmi_category = "Overweight - Severely Obese";
+      }
+  }
 
   getUserDetails(){
     this.webService.userDetailsAPI(this.email).subscribe(data =>{
@@ -60,7 +84,9 @@ export class UserService {
       this.weight = data['data']['weight'];
       this.height = data['data']['height'];
 
-      this.bmi = this.weight/(this.height)**2;
+      this.updateBMI();
+        
+
     },
     err=>{
       console.log(err.error.message);

@@ -24,6 +24,88 @@
       <span class="navbar-text">
         Logged in as {{this.userService.firstName}} {{this.userService.lastName}}
       </span>
-      <button type="button" class="btn btn-danger ml-3">Logout</button>
+      <button type="button" (click)="navLogout()" class="btn btn-danger ml-3">Logout</button>
     </div>
   </nav>
+
+
+  <div class="container mt-4">
+      <h2>Workout</h2>
+      <p>Let's do the workout together!</p>
+      <form>
+        <div class="form-group">
+          <label for="sel1">Select the exercise:</label>
+          <select [ngModelOptions]="{standalone: true}" [(ngModel)]="this.selectedValueExercise" (ngModelChange)="console.log($event)" class="form-control" id="sel1">
+            <option [value]="0">Cardio</option>
+            <option [value]="1">Weight</option>
+            <option [value]="2">Dance aerobic</option>
+            <option [value]="3">Custom</option>
+          </select>
+
+          <label *ngIf="this.selectedValueExercise!=3" for="sel2">Select Type:</label>
+          <select *ngIf="this.selectedValueExercise!=3" class="form-control" id="sel2" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.selectedValueType">
+              <option *ngFor="let option of getOptions(); let i = index" [value]="i">
+                  {{option}}
+                  </option>
+          </select>
+
+          <label *ngIf="this.selectedValueExercise==3" for="inp">Custom:</label>
+          <input *ngIf="this.selectedValueExercise==3" type="text" placeholder="exercise" class="form-control">
+          <br>
+        </div>
+      </form>
+
+      <p>Questions:</p>
+      <label class="checkbox-inline"><input class="mr-2" [(ngModel)]="this.warmup" type="checkbox" value="">Did you warm up?</label>
+      <label class="checkbox-inline ml-4"><input class="mr-2" [(ngModel)]="this.stretched" type="checkbox" value="">Did you stretch?</label>
+      <label class="checkbox-inline ml-4"><input class="mr-2" [(ngModel)]="this.achieved" type="checkbox" value="">Did you achieve your goal?</label> 
+
+      <button type="button" class="btn btn-success ml-3">Submit</button>
+
+
+      <h5 class="pt-4">History</h5>
+      <table class="table mt-2">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Category</th>
+              <th scope="col">Type</th>
+              <th scope="col">Warmed up</th>
+              <th scope="col">Streched</th>
+              <th scope="col">Achieved Goal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1-1-1</th>
+              <td>test</td>
+              <td>test</td>
+              <td>yes</td>
+              <td>yes</td>
+              <td>yes</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      <h4 class="pt-4">Watch</h4>
+      <p>Videos recommendation</p>
+      <div class="card-group mt-6">
+        <div *ngFor="let video of videos" class="col-xl-6 col-md-6 mb-4">
+            <div class="card bg-dark text-white">
+                <img [src]="video.snippet.thumbnails.medium.url" class="card-img" alt="...">
+                
+                <div class="card-img-overlay">
+                    <h5 class="card-overlay-x"><a style="color: white" href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}
+                    </a></h5>
+                    <div class="card-text text-black-50">{{video.snippet.description.slice(0, 100)}}</div>
+                    <p class="card-text">{{video.snippet.description}}</p>
+                </div>
+            </div>
+          </div>
+      </div>
+
+        
+    </div>
+
+   

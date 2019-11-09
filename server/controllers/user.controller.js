@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+ObjectId = require('mongodb').ObjectID;
 
 // Method to login user
 exports.userLogin = function(req, res){
@@ -56,6 +57,38 @@ exports.userDetails = function(req, res){
 
 }
 
+
+// Method to update weight and height
+exports.updateWeightHeight = function (req, res) {
+
+  const update = {
+    "weight": req.body.weight,
+    "height": req.body.height
+  }
+
+  //console.log(update);
+
+  if(req.body.weight <= 0 || req.body.height <=0 || req.body.weight > 100 || req.body.height > 10){
+    return res.status(400).json({
+      status: 400,
+      message: "Invalid weight/height"
+    });
+  }
+
+  User.findOneAndUpdate({"_id":ObjectId(req.body._id)}, update, false)
+  .then(function(sucess){
+    return res.status(200).json({
+      status: 200,
+      data: {},
+      message: 'Success'
+    });
+  }).catch(function(err){
+    return res.status(400).json({
+      status: 400,
+      message: err.message
+    });
+  });
+}
 
 // Method to create new user
 exports.create = function (req, res) {

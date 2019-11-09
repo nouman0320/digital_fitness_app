@@ -17,6 +17,7 @@ import { UserService } from './user.service';
 import { WebService } from './web.service';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     AlertModule.forRoot()
   ],
   providers: [UserService, WebService],

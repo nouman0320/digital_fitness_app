@@ -10,6 +10,15 @@ export class WebService {
   constructor(public http: HttpClient) { }
 
 
+  updateWeightHeightAPI(update: any): Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let body = JSON.stringify(update);
+    return this.http.post('/api/users/update-weight-height' , body, {
+      headers: headers
+    });
+  }
+
   loginAPI(user: any): Observable<any>{
 
     //console.log("loginAPI")
