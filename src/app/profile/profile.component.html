@@ -27,3 +27,56 @@
       <button type="button" (click)="navLogout()" class="btn btn-danger ml-3">Logout</button>
     </div>
   </nav>
+
+
+  <div class="container mt-4">
+    <h2>Profile</h2>
+    <p>You can manange your profile details</p>
+
+    <div class="row mt-4">
+      <div class="form-group col-5">
+        <label class="text-uppercase">First Name:</label>
+        <input class="form-control" type="text" [(ngModel)]="this.userService.firstName" placeholder="First Name">
+      </div>
+
+      <div class="form-group col-5 ml-2">
+        <label class="text-uppercase">Last Name:</label>
+        <input class="form-control" type="text" [(ngModel)]="this.userService.lastName" placeholder="Last Name">
+      </div>
+
+    </div>
+
+    <div class="row mt-2"> 
+      <div class="form-group col-5">
+        <label class="text-uppercase">Email</label>
+        <input class="form-control" type="text" [(ngModel)]="this.userService.email" (keyup)="this.userService.updateBMI()" placeholder="Email">
+      </div>
+    </div>
+
+    <div class="row mt-2"> 
+      <div class="form-group col-5">
+        <label class="text-uppercase">New Password</label>
+        <input class="form-control" type="password" [(ngModel)]="this.newPassword" (keyup)="this.userService.updateBMI()" placeholder="New Password">
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="form-group col-5">
+        <label class="text-uppercase">Weight:</label>
+        <input class="form-control" type="number" [(ngModel)]="this.userService.weight" placeholder="Weight">
+      </div>
+
+      <div class="form-group col-5 ml-2">
+        <label class="text-uppercase">Height:</label>
+        <input class="form-control" type="number" [(ngModel)]="this.userService.height" placeholder="Height">
+      </div>
+
+    </div>
+
+    <button (click)="updateProfile()" type="button" class="btn btn-success mt-2">Save</button>
+    <button (click)="deleteAccount()" type="button" class="btn btn-danger mt-2 ml-2">Delete My Account</button>
+
+
+
+
+  </div>

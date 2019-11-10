@@ -32,6 +32,15 @@ export class WebService {
   }
 
 
+  updateProfileAPI(user: any): Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let body = JSON.stringify(user);
+    return this.http.post('/api/users/update' , body, {
+      headers: headers
+    });
+  }
+
   registerAPI(user: any): Observable<any>{
     let headers = new HttpHeaders();
     headers = headers.append('Content-Type', 'application/json');
@@ -46,6 +55,14 @@ export class WebService {
     headers = headers.append('Content-Type', 'application/json');
     let body = JSON.stringify(workout);
     return this.http.post('/api/workouts/add' , body, {
+      headers: headers
+    });
+  }
+
+
+  deleteProfileAPI(_id: String): Observable<any>{
+    let headers = new HttpHeaders();
+    return this.http.delete('api/users/'+_id, {
       headers: headers
     });
   }
