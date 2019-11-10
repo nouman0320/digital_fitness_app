@@ -25,7 +25,7 @@ export class DietComponent implements OnInit {
   ngOnInit() {
     this.videos = [];
     this.youTubeService
-    .getVideosForChanel(15)
+    .getVideosForChanel(15,"fitness+diet+plan")
     .pipe(takeUntil(this.unsubscribe$))
     .subscribe(lista => {
     for (let element of lista["items"]) {

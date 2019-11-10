@@ -27,3 +27,43 @@
       <button type="button" (click)="navLogout()" class="btn btn-danger ml-3">Logout</button>
     </div>
   </nav>
+
+
+  <div class="container">
+    <h2 class="mt-4">Performance</h2>
+
+    <div class="row mt-4">
+      <button type="button" (click)="switchSection(0)" class="btn btn-primary col-2">Agility</button>
+      <button type="button" (click)="switchSection(1)" class="btn btn-primary col-2 ml-2">Balance</button>
+      <button type="button" (click)="switchSection(2)" class="btn btn-primary col-2 ml-2">Speed</button>
+      <button type="button" (click)="switchSection(3)" class="btn btn-primary col-2 ml-2">Flexibility</button>
+      <button type="button" (click)="switchSection(4)" class="btn btn-primary col-3 ml-2">Cardio Vescular Endurance</button>
+    </div>
+
+
+    <div class="mt-4">
+      <h4>{{this.section_title}}</h4>
+      <p>Improve your {{this.section_title}} by following YouTube video</p>
+
+
+      <div class="card-group mt-6">
+        <div *ngFor="let video of videos" class="col-xl-3 col-md-6 mb-4">
+            <div class="card bg-dark text-white">
+                <img [src]="video.snippet.thumbnails.medium.url" class="card-img" alt="...">
+                
+                <div class="card-img-overlay">
+                    <h5 class="card-overlay-x"><a target="_blank" style="color: white" href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}
+                    </a></h5>
+                    <div class="card-text text-black-50">{{video.snippet.description.slice(0, 100)}}</div>
+                    <p class="card-text">{{video.snippet.description}}</p>
+                </div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
