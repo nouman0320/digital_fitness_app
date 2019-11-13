@@ -1,0 +1,11 @@
+<h4>Measurements</h4>
+<P>Keep track for your measurements</P>
+<div class="row ml-2">
+    <input #waist class="form-control col-2" type="number" placeholder="Waist">
+    <input #hips class="form-control col-2 ml-2" type="number" placeholder="Hips">
+    <input #chest class="form-control col-2 ml-2" type="number" placeholder="Chest">
+    <input #abs class="form-control col-2 ml-2" type="number" placeholder="Abs">
+    <input #arms class="form-control col-2 ml-2" type="number" placeholder="Arms">
+</div>
+
+<button type="button" class="btn btn-success ml-2 mt-2" (click)="this.updateMeasurements(waist.value, hips.value, chest.value, abs.value, arms.value)">Submit</button>

@@ -17,7 +17,9 @@ import { UserService } from './user.service';
 import { WebService } from './web.service';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { ProgressActivityComponent } from './progress-activity/progress-activity.component';
+import { MeasurementsComponent } from './measurements/measurements.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FormsModule } from '@angular/forms'
     ProfileComponent,
     PerformanceComponent,
     DietComponent,
-    WorkoutComponent
+    WorkoutComponent,
+    ProgressActivityComponent,
+    MeasurementsComponent
   ],
   imports: [
     BrowserModule,
