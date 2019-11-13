@@ -9,3 +9,29 @@
 </div>
 
 <button type="button" class="btn btn-success ml-2 mt-2" (click)="this.updateMeasurements(waist.value, hips.value, chest.value, abs.value, arms.value)">Submit</button>
+
+<h5 class="mt-4">History</h5>
+<table class="table mt-2">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Waist</th>
+            <th scope="col">Hips</th>
+            <th scope="col">Chest</th>
+            <th scope="col">Abs</th>
+            <th scope="col">Arms</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let measurement of measurements;">
+            <th scope="row">{{measurement.date}}</th>
+            <td>{{measurement.waist}}</td>
+            <td>{{measurement.hips}}</td>
+            <td>{{measurement.chest}}</td>
+            <td>{{measurement.abs}}</td>
+            <td>{{measurement.arms}}</td>
+            <td><button class="btn btn-sm btn-danger" type="button" (click)="this.removeMeasurement(measurement._id)">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>

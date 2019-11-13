@@ -59,6 +59,24 @@ export class WebService {
     });
   }
 
+  newMeasurementAPI(measurement: any): Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let body = JSON.stringify(measurement);
+    return this.http.post('/api/measurements/add' , body, {
+      headers: headers
+    });
+  }
+
+
+  newLogAPI(log: any): Observable<any>{
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/json');
+    let body = JSON.stringify(log);
+    return this.http.post('/api/logs/add' , body, {
+      headers: headers
+    });
+  }
 
   deleteProfileAPI(_id: String): Observable<any>{
     let headers = new HttpHeaders();
@@ -77,6 +95,37 @@ export class WebService {
   getWorkoutsAPI(_userId: String): Observable<any>{
     let headers = new HttpHeaders();
     return this.http.get('api/workouts/'+_userId, {
+      headers: headers
+    });
+  }
+
+
+  removeMeasurementsAPI(_id: String): Observable<any>{
+    let headers = new HttpHeaders();
+    return this.http.delete('api/measurements/'+_id, {
+      headers: headers
+    });
+  }
+
+  getMeasurementsAPI(_userId: String): Observable<any>{
+    let headers = new HttpHeaders();
+    return this.http.get('api/measurements/'+_userId, {
+      headers: headers
+    });
+  }
+
+
+
+  removeLogsAPI(_id: String): Observable<any>{
+    let headers = new HttpHeaders();
+    return this.http.delete('api/logs/'+_id, {
+      headers: headers
+    });
+  }
+
+  getLogsAPI(_userId: String): Observable<any>{
+    let headers = new HttpHeaders();
+    return this.http.get('api/logs/'+_userId, {
       headers: headers
     });
   }

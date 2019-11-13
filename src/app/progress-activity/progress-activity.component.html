@@ -1,1 +1,29 @@
-<p>progress-activity works!</p>
+<h4>Log</h4>
+<P>Log your daily progress</P>
+<div class="row ml-2">
+    <input #log class="form-control col-8" type="text" placeholder="Log">
+    <button type="button" class="btn btn-success col-2 ml-3" (click)="updateLogs(log.value)">Submit</button>
+</div>
+
+
+
+<h5 class="mt-4">History</h5>
+<table class="table mt-2">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Log</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let progress of progresses;">
+            <th scope="row">{{progress.date}}</th>
+            <td>{{progress.log}}</td>
+            <td><button class="btn btn-sm btn-danger" type="button" (click)="this.removeLog(progress._id)">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br/>
+      <hr/>
